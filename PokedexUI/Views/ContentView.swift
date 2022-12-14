@@ -1,10 +1,3 @@
-//
-//  ContentView.swift
-//  PokedexUI
-//
-//  Created by Jay A. on 12/14/22.
-//
-
 import SwiftUI
 
 struct ContentView: View {
@@ -14,8 +7,18 @@ struct ContentView: View {
                 .imageScale(.large)
                 .foregroundColor(.accentColor)
             Text("Hello, world!")
+                .onAppear {
+                    PokeAPI().getData() { pokemon in
+                        print(pokemon)
+                        
+                        for pokemon in pokemon {
+                            print(pokemon.name)
+                        }
+                    }
+                }
         }
         .padding()
+        
     }
 }
 
